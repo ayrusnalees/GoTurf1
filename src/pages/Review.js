@@ -80,26 +80,40 @@ const ReviewPage = () => {
   };
 
   const handleReviewSubmit = () => {
-    const newReview = {
-      id: reviewsData.length + 1, // Generate a new id
-      name: 'New User', 
-      rating: userRating,
-      text: reviewText,
-      image: reviewImage,
-      comments: [],
-      userRatings: []
-    };
-    setReviewsData([...reviewsData, newReview]);
-    setReviewTitle('');
-    setReviewText('');
-    setReviewImage('');
-    setUserRating(null);
+      const newReview = {
+        name: 'New User', 
+        title: reviewTitle,
+        rating: userRating,
+        text: reviewText,
+      };
+    
+      // POST request to the backend
+      fetch('http://localhost:8080/tharunpostAll', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newReview),
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Review submitted successfully:', data);
+          setReviewsData([...reviewsData, newReview]); // Update the state with the new review
+          setReviewTitle('');
+          setReviewText('');
+          setReviewImage('');
+          setUserRating(null);
+        })
+        .catch(error => {
+          console.error('Error submitting review:', error);
+        });
+    
   };
 
   return (
     <Box sx={{ minHeight: '100vh', backgroundColor: '#f5f5f5', py: 4 }}>
       <Container>
-        <Typography variant="h3" align="center" gutterBottom>Customer Reviews</Typography>
+        <Typography variant="h3" align="center" paddingTop="70px" gutterBottom>Customer Reviews</Typography>
 
         {/* New Review Form */}
         <Box sx={{ mb: 4, p: 2, backgroundColor: '#fff', borderRadius: 2, boxShadow: 2 }}>
@@ -112,11 +126,11 @@ const ReviewPage = () => {
             onChange={(e) => setReviewTitle(e.target.value)}
             sx={{ mb: 2 }}
           />
-          <Rating
+          {/*<Rating
             value={userRating}
             onChange={handleRatingChange}
             sx={{ mb: 2 }}
-          />
+          />*/}
           <TextField
             fullWidth
             multiline
@@ -127,19 +141,18 @@ const ReviewPage = () => {
             onChange={(e) => setReviewText(e.target.value)}
             sx={{ mb: 2 }}
           />
-          <TextField
+          {/* <TextField
             fullWidth
             label="Image URL (Optional)"
             variant="outlined"
             value={reviewImage}
             onChange={(e) => setReviewImage(e.target.value)}
             sx={{ mb: 2 }}
-          />
+          /> */}
           <Button
             variant="contained"
             color="primary"
             onClick={handleReviewSubmit}
-            disabled={!reviewText.trim() || userRating === null}
           >
             Submit Review
           </Button>

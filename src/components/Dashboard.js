@@ -19,8 +19,6 @@ const Dashboard = () => {
             <Button component={Link} to="/" color="inherit">Home</Button>
             <Button component={Link} to="/contact" color="inherit">Contact</Button>
             <Button component={Link} to="/location" color="inherit">Location</Button>
-            <Button component={Link} to="/sign-in" color="inherit">Sign In</Button>
-            <Button component={Link} to="/sign-up" color="inherit">Sign Up</Button>
           </Toolbar>
         </AppBar>
         <Container sx={{ py: 4 }}>
