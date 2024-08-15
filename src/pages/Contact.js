@@ -1,119 +1,279 @@
-import React from 'react';
-import { Container, Typography, TextField, Button, Grid, Paper } from '@mui/material';
-import { styled } from '@mui/system';
-// import WhatsAppIcon from '@mui/icons-material/WhatsApp';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import EmailIcon from '@mui/icons-material/Email';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import TwitterIcon from '@mui/icons-material/Twitter';
+// import React, { useState } from "react";
+// import { TextField, Button, Grid, Typography, Box, Snackbar } from "@mui/material";
+// import { Instagram, Email, Facebook, Twitter, Phone, LocationOn } from "@mui/icons-material";
 
-const FormPaper = styled(Paper)(({ theme }) => ({
-  padding: theme.spacing(4),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-  backgroundColor: theme.palette.background.paper,
-  boxShadow: theme.shadows[3],
-}));
+// const ContactUsPage = () => {
+//   const [name, setName] = useState("");
+//   const [email, setEmail] = useState("");
+//   const [message, setMessage] = useState("");
+//   const [openSnackbar, setOpenSnackbar] = useState(false);
 
-const IconContainer = styled('div')(({ theme }) => ({
-  display: 'flex',
-  justifyContent: 'center',
-  gap: theme.spacing(2),
-  margin: theme.spacing(2, 0),
-}));
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     console.log("Name:", name);
+//     console.log("Email:", email);
+//     console.log("Message:", message);
 
-// const CustomWhatsAppIcon = styled(WhatsAppIcon)(({ theme }) => ({
-//   color: '#25D366',
-//   fontSize: '2.5rem',
-//   '&:hover': {
-//     color: '#128C7E',
-//     transform: 'scale(1.2)',
-//     transition: 'transform 0.2s',
-//   },
-// }));
+//     // Show the Snackbar after form submission
+//     setOpenSnackbar(true);
 
-const CustomInstagramIcon = styled(InstagramIcon)(({ theme }) => ({
-  color: '#E4405F',
-  fontSize: '2.5rem',
-  '&:hover': {
-    color: '#C13584',
-    transform: 'scale(1.2)',
-    transition: 'transform 0.2s',
-  },
-}));
+//     // Reset form fields
+//     setName("");
+//     setEmail("");
+//     setMessage("");
+//   };
 
-const CustomEmailIcon = styled(EmailIcon)(({ theme }) => ({
-  color: '#D44638',
-  fontSize: '2.5rem',
-  '&:hover': {
-    color: '#BB001B',
-    transform: 'scale(1.2)',
-    transition: 'transform 0.2s',
-  },
-}));
+//   const handleCloseSnackbar = () => {
+//     setOpenSnackbar(false);
+//   };
 
-const CustomFacebookIcon = styled(FacebookIcon)(({ theme }) => ({
-  color: '#1877F2',
-  fontSize: '2.5rem',
-  '&:hover': {
-    color: '#165FA9',
-    transform: 'scale(1.2)',
-    transition: 'transform 0.2s',
-  },
-}));
+//   return (
+//     <Box
+//       sx={{
+        
+//         backgroundColor: "#f5f5f5",
+//         padding: "200px",
+//         borderRadius: "8px",
+//         maxWidth: "800px",
+//         margin: "auto",
+//         boxShadow: "0px 0px 20px rgba(0, 0, 0, 0.1)",
+//       }}
+//     >
+//       <Typography variant="h4" component="h1" align="center" gutterBottom>
+//         Contact Us
+//       </Typography>
+//       <Typography variant="body1" align="center" gutterBottom>
+//         Feel free to contact us any time. We will get back to you as soon as we can!
+//       </Typography>
+//       <form onSubmit={handleSubmit}>
+//         <Grid container spacing={2}>
+//           <Grid item xs={12}>
+//             <TextField
+//               label="Name"
+//               variant="outlined"
+//               fullWidth
+//               value={name}
+//               onChange={(e) => setName(e.target.value)}
+//             />
+//           </Grid>
+//           <Grid item xs={12}>
+//             <TextField
+//               label="Email"
+//               type="email"
+//               variant="outlined"
+//               fullWidth
+//               value={email}
+//               onChange={(e) => setEmail(e.target.value)}
+//             />
+//           </Grid>
+//           <Grid item xs={12}>
+//             <TextField
+//               label="Message"
+//               variant="outlined"
+//               fullWidth
+//               multiline
+//               rows={4}
+//               value={message}
+//               onChange={(e) => setMessage(e.target.value)}
+//             />
+//           </Grid>
+//           <Grid item xs={12} align="center">
+//             <Button
+//               type="submit"
+//               variant="contained"
+//               color="primary"
+//               sx={{ borderRadius: "20px", padding: "10px 20px", fontSize: "16px" }}
+//             >
+//               Send Message
+//             </Button>
+//           </Grid>
+//         </Grid>
+//       </form>
+//       <Box sx={{ marginTop: "40px" }}>
+//         <Typography variant="h6" component="h2" gutterBottom>
+//           Contact Info
+//         </Typography>
+//         <Box sx={{ display: "flex", alignItems: "center", marginBottom: "10px" }}>
+//           <Phone sx={{ marginRight: "10px" }} />
+//           <Typography>+91 9080690743</Typography>
+//         </Box>
+//         <Box sx={{ display: "flex", alignItems: "center", marginBottom: "10px" }}>
+//           <Email sx={{ marginRight: "10px" }} />
+//           <Typography>info@goturf.com</Typography>
+//         </Box>
+//         <Box sx={{ display: "flex", alignItems: "center", marginBottom: "10px" }}>
+//           <LocationOn sx={{ marginRight: "10px" }} />
+//           <Typography>
+//             Sri Krishna College, Coimbatore, 641008
+//           </Typography>
+//         </Box>
+//         <Box sx={{ display: "flex", justifyContent: "center ", marginTop: "20px" }}>
+//           <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" style={{ margin: "0 10px" }}>
+//             <Facebook sx={{ color: "#4267B2", fontSize: "30px" }} />
+//           </a>
+//           <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" style={{ margin: "0 10px" }}>
+//             <Instagram sx={{ color: "#E1306C", fontSize: "30px" }} />
+//           </a>
+//           <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" style={{ margin: "0 10px" }}>
+//             <Twitter sx={{ color: "#1DA1F2", fontSize: "30px" }} />
+//           </a>
+//         </Box>
+//       </Box>
 
-const CustomTwitterIcon = styled(TwitterIcon)(({ theme }) => ({
-  color: '#1DA1F2',
-  fontSize: '2.5rem',
-  '&:hover': {
-    color: '#0D8BDF',
-    transform: 'scale(1.2)',
-    transition: 'transform 0.2s',
-  },
-}));
+//       {/* Snackbar for form submission success message */}
+//       <Snackbar
+//         open={openSnackbar}
+//         onClose={handleCloseSnackbar}
+//         message="Thanks for contacting us!"
+//         autoHideDuration={4000}
+//         anchorOrigin={{ vertical: "top", horizontal: "center" }}
+//       />
+//     </Box>
+//   );
+// };
 
-const Contact = () => {
+// export default ContactUsPage;
+
+import React, { useState } from "react";
+import { TextField, Button, Grid, Typography, Box, Snackbar } from "@mui/material";
+import { Instagram, Email, Facebook, Twitter, Phone, LocationOn } from "@mui/icons-material";
+import axios from "axios";
+
+const ContactUsPage = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const contactData = {
+      name,
+      email,
+      message,
+    };
+
+    try {
+      const response = await axios.post("http://localhost:8080/suripostAll", contactData);
+      console.log(response.data);
+      setOpenSnackbar(true);
+      // Reset form fields
+      setName("");
+      setEmail("");
+      setMessage("");
+    } catch (error) {
+      console.error("There was an error submitting the form!", error);
+    }
+  };
+
+  const handleCloseSnackbar = () => {
+    setOpenSnackbar(false);
+  };
+
   return (
-    <Container sx={{ py: 4 }}>
-      <Typography variant="h4" gutterBottom paddingTop='75px'>Contact Us</Typography>
-      <Grid container spacing={4}>
-        <Grid item xs={12}>
-          <FormPaper>
-            <Typography variant="h5" gutterBottom>Get in Touch</Typography>
-            <form noValidate autoComplete="off">
-              <TextField label="Name" variant="outlined" fullWidth margin="normal" />
-              <TextField label="Email" variant="outlined" fullWidth margin="normal" />
-              <TextField label="Phone" variant="outlined" fullWidth margin="normal" />
-              <TextField label="Message" variant="outlined" multiline rows={4} fullWidth margin="normal" />
-              <Button variant="contained" color="primary" sx={{ mt: 2 }} type="submit">Send Message</Button>
-            </form>
-          </FormPaper>
+    <Box
+      sx={{
+        backgroundColor: "#f5f5f5",
+        padding: "200px",
+        borderRadius: "8px",
+        maxWidth: "800px",
+        margin: "auto",
+        boxShadow: "0px 0px 20px rgba(0, 0, 0, 0.1)",
+      }}
+    >
+      <Typography variant="h4" component="h1" align="center" gutterBottom>
+        Contact Us
+      </Typography>
+      <Typography variant="body1" align="center" gutterBottom>
+        Feel free to contact us any time. We will get back to you as soon as we can!
+      </Typography>
+      <form onSubmit={handleSubmit}>
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+            <TextField
+              label="Name"
+              variant="outlined"
+              fullWidth
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              label="Email"
+              type="email"
+              variant="outlined"
+              fullWidth
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              label="Message"
+              variant="outlined"
+              fullWidth
+              multiline
+              rows={4}
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              required
+            />
+          </Grid>
+          <Grid item xs={12} align="center">
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              sx={{ borderRadius: "20px", padding: "10px 20px", fontSize: "16px" }}
+            >
+              Send Message
+            </Button>
+          </Grid>
         </Grid>
-        <Grid item xs={12}>
-          <FormPaper>
-            <Typography variant="h5" gutterBottom>Follow Us</Typography>
-            <IconContainer>
-              {/* <a href="https://wa.me/yourwhatsapplink" target="_blank" rel="noopener noreferrer">
-                <CustomWhatsAppIcon />
-              </a> */}
-              <a href="https://www.instagram.com/_jaya.surya._/" target="_blank" rel="noopener noreferrer">
-                <CustomInstagramIcon />
-              </a>
-              <a href="mailto:jayasuryams28@gmail.com">
-                <CustomEmailIcon />
-              </a>
-              <a href="https://www.facebook.com/yourfacebook" target="_blank" rel="noopener noreferrer">
-                <CustomFacebookIcon />
-              </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-                <CustomTwitterIcon />
-              </a>
-            </IconContainer>
-          </FormPaper>
-        </Grid>
-      </Grid>
-    </Container>
+      </form>
+      <Box sx={{ marginTop: "40px" }}>
+        <Typography variant="h6" component="h2" gutterBottom>
+          Contact Info
+        </Typography>
+        <Box sx={{ display: "flex", alignItems: "center", marginBottom: "10px" }}>
+          <Phone sx={{ marginRight: "10px" }} />
+          <Typography>+91 9080690743</Typography>
+        </Box>
+        <Box sx={{ display: "flex", alignItems: "center", marginBottom: "10px" }}>
+          <Email sx={{ marginRight: "10px" }} />
+          <Typography>info@goturf.com</Typography>
+        </Box>
+        <Box sx={{ display: "flex", alignItems: "center", marginBottom: "10px" }}>
+          <LocationOn sx={{ marginRight: "10px" }} />
+          <Typography>Sri Krishna College, Coimbatore, 641008</Typography>
+        </Box>
+        <Box sx={{ display: "flex", justifyContent: "center", marginTop: "20px" }}>
+          <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" style={{ margin: "0 10px" }}>
+            <Facebook sx={{ color: "#4267B2", fontSize: "30px" }} />
+          </a>
+          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" style={{ margin: "0 10px" }}>
+            <Instagram sx={{ color: "#E1306C", fontSize: "30px" }} />
+          </a>
+          <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" style={{ margin: "0 10px" }}>
+            <Twitter sx={{ color: "#1DA1F2", fontSize: "30px" }} />
+          </a>
+        </Box>
+      </Box>
+
+      <Snackbar
+        open={openSnackbar}
+        onClose={handleCloseSnackbar}
+        message="Thanks for contacting us!"
+        autoHideDuration={4000}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+      />
+    </Box>
   );
 };
 
-export default Contact;
+export default ContactUsPage;
+

@@ -19,11 +19,10 @@ const Navbar = () => {
     <AppBar 
       position="fixed" 
       sx={{ 
-        backgroundColor: 'blue', 
+        backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent background
         boxShadow: 'none', 
         height: '80px',
-       
-        zIndex: 2
+        zIndex: 2,
       }}
     >
       <Toolbar sx={{ height: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
@@ -34,26 +33,27 @@ const Navbar = () => {
           <StyledLink to="/">GOTURF</StyledLink>
         </Typography>
         <Button color="inherit" sx={{ fontSize: '16px', fontFamily: 'Roboto, sans-serif', margin: '0 10px' }}>
-          <StyledLink to="/">Home</StyledLink>
+          <StyledLink to="/home">Home</StyledLink>
         </Button>
         <Button color="inherit" sx={{ fontSize: '16px', fontFamily: 'Roboto, sans-serif', margin: '0 10px' }}>
           <StyledLink to="/available-games">Available Games</StyledLink>
         </Button>
-        <Button color="inherit" sx={{ fontSize: '16px', fontFamily: 'Roboto, sans-serif', margin: '0 10px' }}>
+        {/* <Button color="inherit" sx={{ fontSize: '16px', fontFamily: 'Roboto, sans-serif', margin: '0 10px' }}>
           <StyledLink to="/location">Location</StyledLink>
-        </Button>
+        </Button> */}
         <Button color="inherit" sx={{ fontSize: '16px', fontFamily: 'Roboto, sans-serif', margin: '0 10px' }}>
           <StyledLink to="/reviews">Reviews</StyledLink>
         </Button>
-        <Button color="inherit" sx={{ fontSize: '16px', fontFamily: 'Roboto, sans-serif', margin: '0 10px' }}>
+        {/* Uncomment and add these buttons if needed */}
+        {/* <Button color="inherit" sx={{ fontSize: '16px', fontFamily: 'Roboto, sans-serif', margin: '0 10px' }}>
           <StyledLink to="/contact">Contact</StyledLink>
-        </Button>
+        </Button> */}
         <Button color="inherit" sx={{ fontSize: '16px', fontFamily: 'Roboto, sans-serif', margin: '0 10px' }}>
-          <StyledLink to="/sign-in">Sign In</StyledLink>
+          <StyledLink to="/homepage">SignOut</StyledLink>
         </Button>
-        <Button color="inherit" sx={{ fontSize: '16px', fontFamily: 'Roboto, sans-serif', margin: '0 10px' }}>
-          <StyledLink to="/sign-up">Sign Up</StyledLink>
-        </Button>
+        {/* <Button color="inherit" sx={{ fontSize: '16px', fontFamily: 'Roboto, sans-serif', margin: '0 10px' }}>
+          <StyledLink to="/signup">Sign Up</StyledLink>
+        </Button> */}
       </Toolbar>
     </AppBar>
   );

@@ -1,9 +1,9 @@
-
 import React, { useState } from 'react';
-import { Container, Typography, TextField, Button, Grid, Paper } from '@mui/material';
+import { Container, Typography, TextField, Button, Grid, Paper, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
 import { styled } from '@mui/system';
 import FootballImage from '../assets/turf-image.jpg';
-
+import SideImage from '../assets/footside-image.jpg'; // Import the new side image
+import axios from 'axios';
 
 const BookPaper = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(4),
@@ -22,6 +22,15 @@ const ImageContainer = styled('div')({
   borderRadius: '8px',
 });
 
+const SideImageContainer = styled('div')({
+  width: '100%',
+  height: '100%',
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+  borderRadius: '8px',
+  minHeight: '500px', // Set the minimum height for the side image
+});
+
 const BookFootball = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -38,20 +47,45 @@ const BookFootball = () => {
       [name]: value,
     });
   };
-
+  const [open, setOpen] = useState(false); // State to control dialog visibility
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+      axios.post('http://localhost:8080/pragapostAll', formData)
+    .then(response => {
+      console.log(response.data);
+      setOpen(true);
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        date: '',
+        time: '',
+        duration: '',
+      });
+    })
+    .catch(error => {
+      console.error('There was an error!', error);
+    });
     console.log(formData);
+  };
+
+  const handleClose = () => {
+    setOpen(false); // Close the dialog
   };
 
   return (
     <Container sx={{ py: 4 }}>
-      <Typography variant="h3" align="center" gutterBottom>
+      <Typography variant="h3" align="center" paddingTop="80px" gutterBottom>
         Book Your Football Turf
       </Typography>
       <Grid container spacing={4} justifyContent="center">
-        <Grid item xs={12} md={6}>
+        {/* Grid item for the side image */}
+        <Grid item xs={12} md={5}>
+          <SideImageContainer style={{ backgroundImage: `url(${SideImage})` }} />
+        </Grid>
+
+        {/* Grid item for the form */}
+        <Grid item xs={12} md={7}>
           <BookPaper>
             <ImageContainer style={{ backgroundImage: `url(${FootballImage})` }} />
             <Typography variant="h6" gutterBottom>
@@ -117,6 +151,17 @@ const BookFootball = () => {
                 InputLabelProps={{ shrink: true }}
                 required
               />
+              <TextField
+                label="Duration (in hours)"
+                variant="outlined"
+                fullWidth
+                margin="normal"
+                type="number"
+                name="duration"
+                value={formData.duration}
+                onChange={handleChange}
+                required
+              />
               <Button variant="contained" color="primary" type="submit" sx={{ mt: 2 }}>
                 Book Now
               </Button>
@@ -124,6 +169,18 @@ const BookFootball = () => {
           </BookPaper>
         </Grid>
       </Grid>
+      {/* Dialog for success message */}
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>Booking Successful</DialogTitle>
+        <DialogContent>
+          <Typography>Your booking has been successfully completed!</Typography>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Container>
   );
 };
